@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load bootstrap %}
+
+{% block title %}{{ block.super }} - Nagradna igra{% endblock title %}
+
+{% block extra_css %}
+  <link href="{{ STATIC_URL }}citajmi/css/bootstrap-fileupload.css" rel="stylesheet">
+{% endblock %}
+
+{% block highlighted %}
+  <div class="container">
+    <div class="row-fluid header">
+      <h2 class="page-title"><span>Nagradna igra</span> <small>Sudjelujte u nagradnoj igri "Čitaj mi!"</small></h2>
+    </div>
+  </div>
+{% endblock highlighted %}
+
+{% block content %}
+  <div class="row block">
+    <div class="span8">
+      <!-- Upload form -->
+      <form id="album_entry_form" class="form-horizontal well" enctype="multipart/form-data" action="" method="POST">
+        <div class="span6">
+          <p>Dragi roditelji, bake i djedovi, odgojitelji i drugi odrasli koji čitate djeci naglas,</p>
+          <p>
+            pozivamo vas da sudjelujete u nagradnoj igri "Čitaj mi!". Pošaljite nam
+            fotografiju ili video snimku koja prikazuje odraslu osobu i dijete/djecu u
+            dobi do 4 godine za vrijeme aktivnosti čitanja ili dijete/djecu (do 4.g.)
+            koja sama "čitaju".<br>
+            <img src="{{ STATIC_URL }}citajmi/img/gallery/form.jpg" class="img-polaroid album-entry-form" alt="">
+            Na kraju svakog tjedna, sve dok traje kampanja, odabrat ćemo jednu
+            najbolju fotografiju ili video snimku autora koji će biti
+            <a href="{% url 'myflatpages:contest_prize' %}" tabindex="-1">nagrađen slikovnicom</a>
+            za najmlađu djecu.
+          </p>
+          <p>
+            Video snimke (ne duže od 1 minute) učitajte na servis YouTube, a nama pošaljite linkove.<br>
+            Detaljnija pravila nagradne igre pogledajte <a href="{% url 'myflatpages:contest_rules' %}" tabindex="-1">ovdje</a>
+          </p>
+        </div>
+        <legend></legend>
+        {% csrf_token %}
+        {{ entry_form|bootstrap }}
+        {% with img_form.image as field %}
+          <div class="control-group {% if field.errors %} error {% else %} required {% endif %}">
+            <label class="control-label" for="id_{{ field.html_name }}">{{ field.label }}</label>
+            <div class="controls">
+              <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"></div>
+                <div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
+                <span class="btn btn-file"><span class="fileupload-new">Izaberi</span><span class="fileupload-exists">Promijeni</span>{{ field }}</span>
+                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Ukloni</a>
+              </div>
+              {% if field.help_text %}<p class="help-block">{{ field.help_text }}</p>{% endif %}
+              {% for error in field.errors %}<span class="help-inline">{{ error }}</span>{% endfor %}
+            </div>
+          </div>
+        {% endwith %}
+        {{ accept_form|bootstrap }}
+        <div class="form-actions">
+          <input type="submit" class="btn btn-primary" value="Pošaljite">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}citajmi/js/bootstrap-fileupload.js"></script>
+{% endblock %}

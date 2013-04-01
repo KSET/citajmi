@@ -1,0 +1,235 @@
+/*/////////////////////////////////////////////////////////////////////
+ //
+ // Custom theme code styles
+ // Written by Themelize.me (http://themelize.me)
+ //
+ // This is an empty starter template for overriding styles
+ // set by Bootstrap & the theme
+ //
+ // ----------------------------------------------------
+ //
+ // Remove unused code for better performances
+ //
+ // ----------------------------------------------------
+ //
+ // @see - Usefuls tools online for editing
+ // 1. http://charliepark.org/bootstrap_buttons/ - Button style generator
+ // 2. http://www.colorzilla.com/gradient-editor/ - CSS3 gradient maker
+ //
+ // @note
+ // To ensure custom styles are picked up
+ // wrap definitions in body tag
+ // ie.
+ // body .navbar-inner {
+ //   background: #ff0000;
+ // }
+ //
+ /////////////////////////////////////////////////////////////////////*/
+/*
+ * --------------------------------------------------
+ * 1. General Elements
+ *--------------------------------------------------
+ */
+#navigation {
+  /* 1. Navigation wrapper */
+}
+#navigation .brand div {
+  float: left;
+}
+#navigation .brand div.brand-image {
+  padding-right: 0.1em;
+}
+#highlighted {
+  /* 2. Highlighted (below header) wrapper */
+}
+#content {
+  /* 3. Content wrapper */
+}
+#content-below {
+  /* 4. Content Below wrapper */
+}
+#footer {
+  /* 5. Footer wrapper */
+}
+/*
+ * --------------------------------------------------
+ * 2. Colours
+ *--------------------------------------------------
+ */
+.bootstrap-datetimepicker-widget {
+  background-color: rgb(255, 255, 255);
+}
+.bootstrap-datetimepicker-widget .icon-time {
+  color: rgb(89, 89, 89);
+}
+.bootstrap-datetimepicker-widget .icon-calendar {
+  color: rgb(89, 89, 89);
+}
+/*
+ * --------------------------------------------------
+ * 3. Responsiveness/media queries
+ *--------------------------------------------------
+ */
+@media (max-width: 979px) {
+  /* Navbar Collapsed (mobile) */
+}
+@media (min-width: 980px) {
+  /* Navbar Expanded (desktop) */
+}
+@media (min-width: 1200px) {
+  /* Responsive: Large desktop and up (wide) */
+}
+@media (max-width: 979px) {
+  /* Responsive: Mobile to desktop (common for all narrow devices) */
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  /* Responsive: Tablet to desktop (normal) */
+}
+@media (max-width: 767px) {
+  /* Responsive: Landscape phone to desktop/tablet (narrow) */
+}
+@media (max-width: 480px) {
+  /* Responsive: Up to Landscape phone (mobile) */
+}
+/*
+ * --------------------------------------------------
+ * 4. Misc
+ * Other stuff
+ *--------------------------------------------------
+ */
+ /* Events */
+img.event-display {
+  float: left;
+  margin-right: 1.5em;
+  margin-bottom: 1em;
+  max-width: 300px;
+  width: 40%;
+}
+@media (max-width: 767px) {
+  img.event-display {
+    float: none;
+    width: 100%;
+    display: block;
+    margin-bottom: 1em;
+  }
+}
+img.event-thumbnail {
+  margin-bottom: 1em;
+}
+/* Song */
+.song-snippet {
+  margin: 1em 0;
+  padding: 1em 1.5em;
+  border-top: 1px solid #bf9730;
+  border-bottom: 1px solid #bf9730;
+  background: #fbf7de;
+}
+.song-snippet small {
+  display: block;
+  line-height: 20px;
+  color: rgba(36, 36, 36, 0.6);
+}
+.song-snippet small:before {
+  content: '\2014 \00A0';
+}
+/* Books */
+.projects li div.well {
+  border-bottom: 4px solid #3d8abb;
+}
+.projects li div.well img {
+  display: block;
+  margin: auto;
+}
+/* Gallery */
+body .projects li.gallery[class*="span"] {
+  border-bottom: none;
+  padding-bottom: 0em;
+  margin-bottom: 1em;
+}
+body .projects li.gallery[class*="span"]:hover {
+  border-bottom: none;
+}
+
+@media (max-width: 767px) {
+  img.gallery-thumbnail {
+    max-width: 300px;
+    max-height: 225px;
+  }
+}
+img.album-entry-form {
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+/* Landing */
+#landing {
+  background-color: transparent;
+}
+#landing .navbar-inner {
+  background: none;
+  background-color: transparent;
+}
+#landing #navigation .brand span {
+  color: #121312;
+}
+#landing #navigation .brand h1 {
+  color: #121312;
+}
+#landing #highlighted {
+  border: none;
+}
+
+#landing .transparent {
+  background: url('../img/landing/transparent.png') repeat 0 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 1em;
+}
+#landing .transparent form {
+  margin-bottom: 0px;
+}
+
+/* Home */
+.slide .slide-text {
+  color: rgba(36, 36, 36, 0.6);
+}
+.img-polaroid.transparent {
+  border-color: transparent;
+  background-color: transparent;
+}
+.mission {
+  margin-bottom: 40px;
+}
+/* Responsive fb likebox */
+#likebox_wrapper * {
+  width: 100% !important;
+}
+
+/* Base */
+#footer {
+  /*min-height: 300px;*/
+  min-height: 200px;
+}
+/* Sponsors */
+#sponsors [class*="span"] {
+  /*margin-left: 30px;*/
+  margin-left: 10px;
+}
+#sponsors [class*="span"].first {
+  margin-left: 0px;
+}
+#sponsors [class*="span"].other {
+  margin-left: 30px;
+}
+@media (max-width: 767px) {
+  #sponsors [class*="span"] {
+    margin-left: 0px;
+  }
+  #sponsors [class*="span"].other {
+    margin-left: 0px;
+    margin-top: 1.5em;
+  }
+}

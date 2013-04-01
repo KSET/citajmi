@@ -1,0 +1,8 @@
+.DS_Store
+*.db
+*.pyc
+*.pyo
+*.egg-info
+static/*
+media/*
+citajmi/settings/prod.py

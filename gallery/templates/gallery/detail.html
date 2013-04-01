@@ -1,0 +1,45 @@
+{% extends "gallery/list.html" %}
+{% load url from future %}
+{% load custom_filters %}
+
+{% block extra_css %}
+  <link href="{{ STATIC_URL }}citajmi/css/jquery.fancybox.css" rel="stylesheet">
+{% endblock %}
+
+{% block page_title %}<span>Album</span> <small>{{ album.date|date:"d. E Y." }}</small></h2>{% endblock %}
+
+{% block content %}
+  <div class="container portfolio">
+    {% if album.get_images.exists %}
+      <h4>Fotografije</h4>
+      <ul class="thumbnails block projects">
+        {% with album.get_images.count as total %}
+          {% for entry in album.get_images %}
+            <li class="span3 gallery">
+              <a class="various fancybox" rel="gallery1" title="{{ forloop.counter }}/{{ total }}" href="{{ entry.image.get_gallery_display_url }}"><img src="{{ entry.get_thumbnail_url }}" class="img-polaroid gallery-thumbnail" alt="Slika iz albuma"></a>
+            </li>
+          {% endfor %}
+        {% endwith %}
+      </ul>
+    {% endif %}
+    {% if album.get_videos.exists %}
+      <h4>Video snimke</h4>
+      <ul class="thumbnails block projects">
+        {% for entry in album.get_videos %}
+          <li class="span3 gallery">
+            <a class="various fancybox.iframe" href="{{ entry.video|youtube_embed_url|safe }}"><img src="{{ entry.get_thumbnail_url }}" class="img-polaroid gallery-thumbnail" alt="Video iz albuma"></a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}citajmi/js/jquery.fancybox.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".various").fancybox();
+});
+</script>
+{% endblock %}

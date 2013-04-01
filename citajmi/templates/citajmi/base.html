@@ -1,0 +1,215 @@
+{% load url from future %}
+{% load compress %}
+{% load base_extras %}
+<!DOCTYPE html>
+<html lang="hr-HR">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>{% block title %}Čitaj Mi{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Citajmi.info">
+  <meta name="author" content="droan@kset.org">
+  <!-- Le css -->
+  {% compress css %}
+  <link href="{{ STATIC_URL }}citajmi/css/bootstrap.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}citajmi/css/responsive.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}citajmi/css/animate.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}citajmi/css/flexslider.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}citajmi/css/theme-style.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}citajmi/css/custom-style.css" rel="stylesheet">
+  {% endcompress %}
+  {% compress css %}
+  {% block extra_css %}
+  {% endblock %}
+  {% endcompress %}
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="{{ STATIC_URL }}citajmi/js/html5shim.js"></script>
+  <![endif]-->
+  <!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="{{ STATIC_URL }}citajmi/img/icons/52x52.png">
+  <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}citajmi/img/icons/57x57.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}citajmi/img/icons/72x72.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}citajmi/img/icons/114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}citajmi/img/icons/144x144.png">
+  <!-- Google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
+  {% block extra_head %}
+  {% endblock %}
+</head>
+
+<body class="has-navbar-fixed-top has-highlighted">
+  <!-- Navigation -->
+  <div id="navigation" class="wrapper">
+    <div class="navbar navbar-fixed-top" id="top">
+      <div class="navbar-inner">
+        <div class="inner">
+          <div class="container">
+            <a class="brand" href="{% url 'myflatpages:home' %}" title="Naslovna">
+              <div class="brand-image"><img src="{{ STATIC_URL }}citajmi/img/icons/52x52.png" alt=""></div>
+              <div>
+                <h1>Čitaj mi!</h1>
+                <span>Čitajte naglas djeci od rođenja</span>
+              </div>
+            </a>
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <div class="nav-collapse collapse">
+              <ul class="nav pull-right" id="main-menu">
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:about' %}{% active_reverse request 'myflatpages:partners' %}{% active_reverse request 'myflatpages:associates' %}{% active_reverse request 'myflatpages:materials' %}{% active_reverse request 'contact:contact' %}" id="about-drop" data-toggle="dropdown">Kampanja</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                    <li role="menuitem"><a href="{% url 'myflatpages:about' %}" tabindex="-1">O Kampanji</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:partners' %}" tabindex="-1">Partneri</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:associates' %}" tabindex="-1">Suradnici</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:materials' %}" tabindex="-1">Preuzmite materijale</a></li>
+                    <li role="menuitem"><a href="{% url 'contact:contact' %}" tabindex="-1">Kontakt</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:reading_aloud' %}{% active_reverse request 'myflatpages:child_development' %}{% active_reverse request 'myflatpages:reading_paediatrician' %}" id="reading-drop" data-toggle="dropdown">Čitanje</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="reading-drop">
+                    <li role="menuitem"><a href="{% url 'myflatpages:reading_aloud' %}" tabindex="-1">O Čitanju naglas</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:child_development' %}" tabindex="-1">Kalendar razvoja djeteta</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:reading_paediatrician' %}" tabindex="-1">Čitajmo naglas s pedijatrima</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle {% active_reverse request 'books:book_list' %}{% active_reverse request 'myflatpages:books_about' %}{% active_reverse request 'myflatpages:books_and_child' %}" id="books-drop" data-toggle="dropdown">Slikovnica</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="books-drop">
+                    <li role="menuitem"><a href="{% url 'myflatpages:books_about' %}" tabindex="-1">O Slikovnici</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:books_and_child' %}" tabindex="-1">Slikovnica i dijete</a></li>
+                    <li role="menuitem"><a href="{% url 'books:book_list' %}" tabindex="-1">Knjižničari preporučuju</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle {% active_reverse request 'events:event_list' %}{% active_reverse request 'events:event_add' %}" id="events-drop" data-toggle="dropdown">Događanja</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="events-drop">
+                    <li role="menuitem"><a href="{% url 'events:event_list' %}" tabindex="-1">Aktualna događanja</a></li>
+                    <li role="menuitem"><a href="{% url 'events:event_add' %}" tabindex="-1">Prijavite događaj</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle {% active_reverse request 'gallery:album_list' %}{% active_reverse request 'gallery:entry_add' %}{% active_reverse request 'myflatpages:contest_prize' %}" id="gallery-drop" data-toggle="dropdown">Nagradna igra</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="gallery-drop">
+                    <li role="menuitem"><a href="{% url 'myflatpages:contest_prize' %}" tabindex="-1">Slikovnica tjedna</a></li>
+                    <li role="menuitem"><a href="{% url 'gallery:entry_add' %}" tabindex="-1">Sudjelujte</a></li>
+                    <li role="menuitem"><a href="{% url 'gallery:album_list' %}" tabindex="-1">Galerija</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Highlighted -->
+  <div id="highlighted">
+    {% block highlighted %}
+    {% endblock %}
+  </div>
+  <!-- Content -->
+  <div id="content">
+    <div class="container">
+      {% block mission_statement %}
+      {% endblock %}
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+  <!-- Partners -->
+  <div id="content-below" class="wrapper">
+    <div class="container">
+      <div class="clients block">
+        <h3 class="block-title"><span>Partneri</span></h3>
+        <ul class="thumbnails">
+          <li class="span2"><a href="http://www.hkdrustvo.hr/" class="_tooltip" data-placement="top" data-original-title="HKD" title="Hrvatsko knjižničarsko društvo"><img src="{{ STATIC_URL }}citajmi/img/partners/HKD.png" class="img-rounded" alt="HKD logo" /></a></li>
+          <li class="span2"><a href="http://www.hcd.hr/" class="_tooltip" data-placement="top" data-original-title="HCD" title="Hrvatsko čitateljsko društvo"><img src="{{ STATIC_URL }}citajmi/img/partners/HCD.png" class="img-rounded" alt="HCD logo" /></a></li>
+          <li class="span2"><a href="http://www.hpd.com.hr/" class="_tooltip" data-placement="top" data-original-title="HPD" title="Hrvatsko pedijatrijsko društvo"><img src="{{ STATIC_URL }}citajmi/img/partners/HPD.png" class="img-rounded" alt="HPD logo" /></a></li>
+          <li class="span2"><a href="http://www.hidk.hr/" class="_tooltip" data-placement="top" data-original-title="HIDK" title="Hrvatsko udruga istraživača dječje književnosti"><img src="{{ STATIC_URL }}citajmi/img/partners/HIDK.png" class="img-rounded" alt="HIDK logo" /></a></li>
+          <li class="span2"><a href="http://www.mspm.hr/" class="_tooltip" data-placement="top" data-original-title="MSPM" title="Ministarstvo socijalne politike i mladih"><img src="{{ STATIC_URL }}citajmi/img/partners/MSPM.png" class="img-rounded" alt="MSPM logo" /></a></li>
+          <li class="span2"><a href="http://www.unicef.hr/" class="_tooltip" data-placement="top" data-original-title="unicef" title="unicef"><img src="{{ STATIC_URL }}citajmi/img/partners/unicef.png" class="img-rounded" alt="unicef logo" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="inner">
+      <div class="container">
+        <div class="row">
+          <!-- Events -->
+          <div class="span6 col blog-list blog-list-short">
+            <h3>Aktualna događanja</h3>
+            {% for event in current_events %}
+              {% url 'events:event_detail' slug=event.slug as event_url %}
+              <div class="media row">
+                <div class="media-body span6">
+                  <h5 class="title media-heading"><a href="{{ event_url }}">{{ event.start|date:"d.m." }} {{ event.title }}</a></h5>
+                  <ul class="inline meta">
+                    <li><i class="icon-calendar"></i> {{ event.start|date:"D \o\d H:i" }}</li>
+                    <li><i class="icon-map-marker"></i> {{ event.location }}</li>
+                  </ul>
+                </div>
+              </div>
+            {% empty %}
+              <p>Trenutno nema aktualnih događanja.</p>
+            {% endfor %}
+          </div>
+          <!-- Contact -->
+          <div class="span4 col contact-block">
+            <h3>Kontaktirajte nas!</h3>
+            <address>
+              <p><strong>Citajmi.info</strong></p>
+              {% include "citajmi/contact_info.html" %}
+            </address>
+          </div>
+          <!-- Follow us -->
+          <div class="span2 col social-media">
+            <h3>Pratite nas na</h3>
+            <a href="https://twitter.com/Citaj_mi"><i class="icon-twitter"></i> Twitter</a>
+            <a href="http://www.facebook.com/CitajMi"><i class="icon-facebook"></i> Facebook</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="subfooter">
+            <div class="span12"><p>Site by <a href="mailto:droan@kset.org?Subject=[Citajmi]">droan@kset.org</a> | Hosting provided by <a href="http://www.kset.org">KSET</a> | &copy; 2013. <a href="/">Citajmi.info</a></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  {# <script src="{{ STATIC_URL }}citajmi/js/jquery.js"></script> #}
+  {% compress js %}
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-transition.js"></script>
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-affix.js"></script>
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-alert.js"></script>
+  {# <script src="{{ STATIC_URL }}citajmi/js/bootstrap-modal.js"></script> #}
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-dropdown.js"></script>
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-scrollspy.js"></script>
+  {# <script src="{{ STATIC_URL }}citajmi/js/bootstrap-tab.js"></script> #}
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-tooltip.js"></script>
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-popover.js"></script>
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-button.js"></script>
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-collapse.js"></script>
+  {# <script src="{{ STATIC_URL }}citajmi/js/bootstrap-carousel.js"></script> #}
+  <script src="{{ STATIC_URL }}citajmi/js/bootstrap-typeahead.js"></script>
+  <!--Non-Bootstrap JS-->
+  <script src="{{ STATIC_URL }}citajmi/js/jquery.flexslider-min.js"></script>
+  {# <script src="{{ STATIC_URL }}citajmi/js/jquery.quicksand.js"></script> #}
+  <script src="{{ STATIC_URL }}citajmi/js/script.js"></script>
+  {% endcompress %}
+  {% compress js %}
+  {% block js %}
+  {% endblock %}
+  {% endcompress %}
+</body>
+</html>

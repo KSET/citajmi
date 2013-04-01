@@ -1,0 +1,72 @@
+{% extends "events/list.html" %}
+{% load url from future %}
+
+{% block extra_css %}
+  <link href="{{ STATIC_URL }}citajmi/css/jquery.fancybox.css" rel="stylesheet">
+{% endblock %}
+
+{% block extra_head %}
+  <meta property="og:title" content="{{ event.title }}">
+  <meta property="og:description" content="www.citajmi.info">
+  <meta property="og:image" content="http://www.citajmi.info{% if event.image %}{{ event.image.get_event_thumbnail_url }}{% else %}{{ STATIC_URL }}citajmi/img/events/default.jpg{% endif %}">
+{% endblock extra_head %}
+
+{% block highlighted %}
+  <div class="container">
+    <div class="row-fluid header">
+      <h2 class="page-title"><span>Opširnije o događaju</span> <small></small></h2>
+    </div>
+  </div>
+{% endblock highlighted %}
+
+{% block detail %}
+  <div class="span8 blog-post">
+    <!--Main blog post-->
+    <div class="media">
+      <div class="media-body">
+        <h3 class="title media-heading">{{ event.title }}</h3>
+        <!-- Meta details -->
+        <ul class="inline meta muted">
+          {% if event.start.date == event.end.date %}
+            <li><i class="icon-calendar"></i> {{ event.start|date:"l, d. E Y." }}</li>
+            <li><i class="icon-time"></i>{{ event.start|date:"H:i" }} do {{ event.end|date:"H:i" }}</li>
+            <li><i class="icon-map-marker"></i> {{ event.location }}</li>
+          {% else %}
+            <li><i class="icon-map-marker"></i> {{ event.location }}</li>
+            <br>
+            <li><i class="icon-calendar"></i>{{ event.start|date:"l, d. E Y." }}</li>
+            <li><i class="icon-time"></i>{{ event.start|date:"H:i" }} do</li>
+            <br>
+            <li><i class="icon-calendar"></i>{{ event.end|date:"l, d. E Y." }}</li>
+            <li><i class="icon-time"></i>{{ event.end|date:"H:i" }}</li>
+          {% endif %}
+        </ul>
+        <hr>
+        {% if event.image %}
+          <a class="various fancybox" title="{{ event.title }}" href="{{ event.image.image.url }}"><img src="{{ event.image.get_event_thumbnail_url }}" alt="Slika uz događaj" class="media-object img-polaroid event-display"></a>
+        {% else %}
+          <img src="{{ STATIC_URL }}citajmi/img/events/default.jpg" alt="Slika uz događaj" class="media-object img-polaroid event-display">
+        {% endif %}
+
+        {{ event.info|urlize|linebreaks }}
+        <!-- Share links -->
+        <div class="team-member">
+          <div class="social-media bordered-top-medium">
+            <h4 style="display: inline;">Podijeli:  </h4>
+            <a href="http://twitter.com/home?status={{ request.build_absolute_uri }}" class="_tooltip" data-placement="top" data-original-title="Twitter"><i class="icon-twitter"></i></a>
+            <a href="http://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" class="_tooltip" data-placement="top" data-original-title="Facebook"><i class="icon-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}citajmi/js/jquery.fancybox.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".various").fancybox();
+});
+</script>
+{% endblock %}

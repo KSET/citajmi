@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}{{ block.super }} - Događanja{% endblock title %}
+
+{% block highlighted %}
+  <div class="container">
+    <div class="row-fluid header">
+      {% if date %}
+        <h2 class="page-title"><span>Arhiva</span> <small>{{ date|date:"F Y." }}</small></h2>
+      {% else %}
+        <h2 class="page-title"><span>Aktualna događanja</span> <small></small></h2>
+      {% endif %}
+    </div>
+  </div>
+{% endblock highlighted %}
+
+{% block content %}
+  {# <!-- Flash message --> #}
+  {% if messages %}
+    <div class="row">
+      <div class="span8">
+        {% for msg in messages %}
+          <div class="alert {% if msg.tags %}alert-{{ msg.tags }}{% endif %}">
+            <a class="close" data-dismiss="alert">×</a>{{ msg }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="row">
+    {% block detail %}
+      <div class="span8 blog-list">
+        {% for event in events %}
+          {% url 'events:event_detail' slug=event.slug as event_url %}
+          <!-- Event -->
+          <div class="media row">
+            <a class="span2" href="{{ event_url }}">
+              <img src="{% if event.image %}{{ event.image.get_event_thumbnail_url }}{% else %}{{ STATIC_URL }}citajmi/img/events/default.jpg{% endif %}" alt="Slika uz događaj" class="media-object img-polaroid event-thumbnail">
+            </a>
+            <div class="media-body span6">
+              <h4 class="title media-heading"><a href="{{ event_url }}">{{ event.start|date:"d.m." }} {{ event.title }}</a></h4>
+              <ul class="inline meta muted">
+                <li><i class="icon-calendar"></i> {{ event.start|date:"D \o\d H:i" }}</li>
+                <li><i class="icon-map-marker"></i> {{ event.location }}</li>
+              </ul>
+              <p>{{ event.info|truncatewords:50 }}</p>
+              <ul class="inline links">
+                <li><a href="{{ event_url }}" class="btn btn-mini"><i class="icon-circle-arrow-right"></i> Opširnije</a></li>
+              </ul>
+            </div>
+          </div>
+        {% empty %}
+          {% if date %}
+            <p>Nema događanja za traženi mjesec.</p>
+          {% else %}
+            <p>Trenutno nema aktualnih događanja.</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endblock detail %}
+    {# Sidebar #}
+    <div class="span4 sidebar sidebar-right">
+      <div class="inner">
+        <!-- Arhiva -->
+        {% if archive %}
+          <div class="block">
+            <h3 class="block-title sub-title"><span>Arhiva</span></h3>
+            <ul class="big-list tags">
+              {% for month in months %}
+                <li><a href="{% url 'events:event_archive' month.0.year month.0.month %}">{{ month.0|date:"F Y." }}</a> ({{ month.1 }})</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% else %}
+          <div class="block">
+            <h3 class="block-title sub-title"><span><a href="?a">Prikaži arhivu</a></span></h3>
+          </div>
+        {% endif %}
+        <div class="block">
+          {% include "citajmi/song.html" %}
+        </div>
+        <div class="block">
+          <a href="{% url 'events:event_add' %}" class="btn btn-warning"><i class="icon-pencil"></i> Prijavite događaj</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

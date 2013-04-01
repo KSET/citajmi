@@ -1,0 +1,24 @@
+Django==1.4.4
+Pillow==1.7.8
+South==0.7.6
+django-appconf==0.6
+django-bootstrap-form==2.0.5
+django-cleanup==0.1.6
+django-compressor==1.3
+django-debug-toolbar==0.9.4
+django-extensions==1.1.1
+django-filebrowser==3.5.1
+django-grappelli==2.4.3
+django-photologue==2.5
+django-resized==0.2.3
+# Used to modify photologue.models.ImageModel
+# from django_resized import ResizedImageField
+# image = models.ImageField(_('image'), max_length=IMAGE_FIELD_MAX_LENGTH, upload_to=get_storage_path)
+# image = ResizedImageField(_('image'), max_length=IMAGE_FIELD_MAX_LENGTH, upload_to=get_storage_path, max_width=1024, max_height=768)
+django-tagging==0.3.1
+django-tinymce==1.5.1b4
+feedparser==5.1.3
+httpagentparser==1.2.1
+pytz==2012j
+six==1.2.0
+wsgiref==0.1.2

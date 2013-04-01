@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}{{ block.super }} - Knjižničari preporučuju{% endblock title %}
+
+{% block highlighted %}
+  <div class="container">
+    <div class="row-fluid header">
+      <h2 class="page-title"><span>Knjižničari preporučuju</span> <small>Lista dobrih knjiga za bebe i djecu rane dobi</small></h2>
+      <!--Book sort links-->
+      <ul class="nav nav-pills" id="masonry-filter" >
+        <li class="active"><a href="#book-cat-all">Sve</a></li>
+        <li><a href="#book-cat-1" class="_tooltip" data-placement="top" data-original-title="Bebe">B</a></li>
+        <li><a href="#book-cat-2" class="_tooltip" data-placement="top" data-original-title="Djeca mlađeg uzrasta">D</a></li>
+        <li><a href="#book-cat-3" class="_tooltip" data-placement="top" data-original-title="Pjesmarice">P</a></li>
+      </ul>
+    </div>
+  </div>
+{% endblock highlighted %}
+
+{% block content %}
+  <div id="masonry">
+    <!--Book items-->
+    <ul id="box_list" class="thumbnails block projects">
+      {% for book in book_list %}
+        <li class="book-cat-{{ book.category }} book-cat-all">
+          <div class="box">
+            <div class="well">
+              <a href="{{ book.url }}" rel="nofollow"><img src="{% if book.image %}{{ book.image.get_book_thumbnail_url }}{% else %}{{ STATIC_URL }}citajmi/img/books/default.jpg{% endif %}" alt="Naslovnica" class="img-polaroid" /></a>
+              <h3 class="title">
+                <a href="{{ book.url }}" rel="nofollow">{{ book.title }}</a>
+                <small class="pull-right">
+                  {% if book.category == 1 %} bebe
+                  {% elif book.category == 2 %} djeca
+                  {% elif book.category == 3 %} pjesmarice
+                  {% endif %}
+                </small>
+              </h3>
+              <p class="muted">{{ book.publisher }}</p>
+              <p class="muted">{{ book.info|truncatewords:50 }}</p>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}citajmi/js/jquery.masonry.min.js"></script>
+<script src="{{ STATIC_URL }}citajmi/js/custom-script.js"></script>
+{% endblock %}

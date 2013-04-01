@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+
+{% block title %}{{ block.super }} - Kontakt{% endblock title %}
+
+{% block highlighted %}
+  <div class="container">
+    <div class="row-fluid header">
+      <h2 class="page-title"><span>Kontakt</span> <small>Imate li pitanja, pohvale ili primjedbe? Kontaktirajte nas!</small></h2>
+    </div>
+  </div>
+{% endblock highlighted %}
+
+{% block content %}
+  {# <!-- Flash message --> #}
+  {% if messages %}
+  <div class="row">
+    <div class="span5">
+      {% for msg in messages %}
+        <div class="alert {% if msg.tags %}alert-{{ msg.tags }}{% endif %}">
+          <a class="close" data-dismiss="alert">×</a>{{ msg }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row block">
+    <div class="span6">
+      <!-- Contact form -->
+      <form id="contact-form" action="" method="POST">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <input type="submit" class="btn btn-primary" value="Pošaljite poruku">
+      </form>
+    </div>
+    <div class="span5">
+      <h3 class="block-title sub-title"><span>Drugi načini da nas kontaktirate</span></h3>
+      {% include "citajmi/contact_info.html" %}
+      {% comment %}
+      <a href="https://maps.google.co.uk/maps?q=Ulica+Hrvatske+Bratske+Zajednice+4,+1000,+Zagreb,+Hrvatska&amp;hl=en&amp;sll=45.799703,15.979443&amp;sspn=0.012461,0.019162&amp;gl=uk&amp;hnear=Ulica+Hrvatske+Bratske+Zajednice+4,+10000,+Zagreb,+Croatia&amp;t=m&amp;z=16">
+        <img src="{{ STATIC_URL }}citajmi/img/contact/google-map.jpg?v=0" alt="Lokacija na mapi" class="img-polaroid">
+      </a>
+      {% endcomment %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+<script>
+$(document).ready(function() {
+    $('#contact-form label').remove();
+    $('#contact-form .contact-form-input').addClass('span5');
+});
+</script>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}{{ block.super }} - Galerija{% endblock title %}
+
+{% block highlighted %}
+  <div class="container">
+    <div class="row-fluid header">
+      <h2 class="page-title">{% block page_title %}<span>Galerija</span> <small>Tjedni albumi {{ year }}.</small>{% endblock %}</h2>
+      <!--Archive links-->
+      <ul class="nav nav-pills">
+        {% for y in years %}
+          <li class="{% if y == year %}active{% endif %}"><a href="{% url 'gallery:album_archive' year=y %}" class="_tooltip" data-placement="top" data-original-title="{{ y }}">{{ y|get_digit:"2" }}{{ y|get_digit:"1" }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock highlighted %}
+
+{% block content %}
+  <div class="container portfolio">
+    {% for a in archive|dictsortreversed:'month' %}
+      <h4>{{ a.month|date:'F Y.' }}</h4>
+      <ul class="thumbnails block projects">
+        {% for album in a.albums %}
+          <li class="span3 gallery">
+            <a href="{% url 'gallery:album_detail' album_id=album.id %}" class="_tooltip" data-placement="top" data-original-title="{{ album.title }}" title="{{ album.title }}">
+              <img src="{{ album.get_cover_url }}" class="img-polaroid gallery-thumbnail" alt="{{ album.title }}">
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% empty %}
+      <p>Nema albuma za traženu godinu.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
