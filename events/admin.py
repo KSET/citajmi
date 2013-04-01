@@ -23,6 +23,8 @@ class EventAdmin(admin.ModelAdmin):
     list_filter = ('public', 'created')
     date_hierarchy = 'start'
 
+    ordering = ['-created']
+
     inlines = (EventImgInline,)
 
 admin.site.register(Event, EventAdmin)
