@@ -36,7 +36,7 @@
           <!-- Event -->
           <div class="media row">
             <a class="span2" href="{{ event_url }}">
-              <img src="{% if event.image %}{{ event.image.get_event_thumbnail_url }}{% else %}{{ STATIC_URL }}citajmi/img/events/default.jpg{% endif %}" alt="Slika uz događaj" class="media-object img-polaroid event-thumbnail">
+              <img src="{% if event.image %}{{ event.image.get_event_thumbnail_url }}{% else %}{{ STATIC_URL }}citajmi/img/events/default_2.jpg{% endif %}" alt="Slika uz događaj" class="media-object img-polaroid event-thumbnail">
             </a>
             <div class="media-body span6">
               <h4 class="title media-heading"><a href="{{ event_url }}">{{ event.start|date:"d.m." }} {{ event.title }}</a></h4>

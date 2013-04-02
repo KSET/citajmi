@@ -8,7 +8,7 @@
 {% block extra_head %}
   <meta property="og:title" content="{{ event.title }}">
   <meta property="og:description" content="www.citajmi.info">
-  <meta property="og:image" content="http://www.citajmi.info{% if event.image %}{{ event.image.get_event_thumbnail_url }}{% else %}{{ STATIC_URL }}citajmi/img/events/default.jpg{% endif %}">
+  <meta property="og:image" content="http://www.citajmi.info{% if event.image %}{{ event.image.get_event_thumbnail_url }}{% else %}{{ STATIC_URL }}citajmi/img/events/default_2.jpg{% endif %}">
 {% endblock extra_head %}
 
 {% block highlighted %}
@@ -45,7 +45,7 @@
         {% if event.image %}
           <a class="various fancybox" title="{{ event.title }}" href="{{ event.image.image.url }}"><img src="{{ event.image.get_event_thumbnail_url }}" alt="Slika uz događaj" class="media-object img-polaroid event-display"></a>
         {% else %}
-          <img src="{{ STATIC_URL }}citajmi/img/events/default.jpg" alt="Slika uz događaj" class="media-object img-polaroid event-display">
+          <img src="{{ STATIC_URL }}citajmi/img/events/default_2.jpg" alt="Slika uz događaj" class="media-object img-polaroid event-display">
         {% endif %}
 
         {{ event.info|urlize|linebreaks }}

@@ -37,6 +37,8 @@ class EventImgForm(forms.ModelForm):
     def clean_image(self):
         image = self.cleaned_data.get('image', None)
         if image:
+            if image.content_type.replace('image/', '') not in settings.IMG_TYPES:
+                raise forms.ValidationError('Slika mora biti u %s formatu.' % (' ili '.join(settings.IMG_TYPES),))
             if image._size > settings.IMG_MAX_SIZE:
                 raise forms.ValidationError('Slika je prevelika ( > %dmb )' % (settings.IMG_MAX_SIZE/1048576))
         return image

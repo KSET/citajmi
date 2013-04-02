@@ -9,3 +9,5 @@ RECIPIENTS_MAIL = getattr(settings, 'EVENTS_RECIPIENTS_MAIL', [])
 SITE_LINK = getattr(settings, 'EVENTS_SITE_LINK', 'http://www.citajmi.info')
 # 1048576 = 1mb
 IMG_MAX_SIZE = getattr(settings, 'EVENTS_IMG_MAX_SIZE', 1048576*2)
+# allowed content_type without 'image/' part
+IMG_TYPES = getattr(settings, 'EVENTS_IMG_TYPES', ['jpeg', 'png'])
