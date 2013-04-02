@@ -214,6 +214,9 @@ img.album-entry-form {
 #flatpage_content h4 {
   font-size: 16px;
 }
+#flatpage_content li {
+  margin-bottom: 0.8em;
+}
 
 /* Base */
 #footer {
