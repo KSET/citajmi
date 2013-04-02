@@ -29,7 +29,7 @@
   {% endif %}
   <div class="row">
     <!-- Sidebar -->
-    <div class="span3 sidebar sidebar-left">
+    <div id="flatpage_nav_container" class="span3 sidebar sidebar-left">
       <div class="inner">
         <div class="block">
           <h3 class="block-title sub-title"><span>Sadržaj</span></h3>
@@ -50,19 +50,23 @@
 {% block js %}
 <script type="text/javascript">
 $(document).ready(function() {
-    // add links to navigation
-    $('#flatpage_content h3').each(function(index) {
-        $(this).addClass('block-title sub-title');
-        $(this).attr('id', 'pt'+index);
-        $('#flatpage_nav').append('<li><a href="#'+$(this).attr('id')+'"><i class="icon-chevron-right"><\/i> '+$(this).text()+'<\/a><\/li>');
-    });
-    // set offset for nav links
-    $('#flatpage_nav a').click(function() {
-        var target = $(this).attr('href')
-        var offset = $('#top').height();
-        $(window).scrollTop($(target).offset().top - offset);
-        return false;
-    });
+    // add links to navigation or hide sidebar
+    if ($('#flatpage_content h3').length > 0) {
+        $('#flatpage_content h3').each(function(index) {
+            $(this).addClass('block-title sub-title');
+            $(this).attr('id', 'pt'+index);
+            $('#flatpage_nav').append('<li><a href="#'+$(this).attr('id')+'"><i class="icon-chevron-right"><\/i> '+$(this).text()+'<\/a><\/li>');
+        });
+        // set offset for nav links
+        $('#flatpage_nav a').click(function() {
+            var target = $(this).attr('href')
+            var offset = $('#top').height();
+            $(window).scrollTop($(target).offset().top - offset);
+            return false;
+        });
+    } else {
+        $('#flatpage_nav_container').hide();
+    }
     // decorate images
     $('#flatpage_content img').addClass('img-polaroid');
 });

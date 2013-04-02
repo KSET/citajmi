@@ -208,6 +208,13 @@ img.album-entry-form {
   width: 100% !important;
 }
 
+#flatpage_content h3 {
+  font-size: 17.5px;
+}
+#flatpage_content h4 {
+  font-size: 16px;
+}
+
 /* Base */
 #footer {
   /*min-height: 300px;*/
