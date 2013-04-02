@@ -11,11 +11,14 @@
         <div class="slides">
           <!--Slide #1-->
           <div class="slide row-fluid">
-            <div class="span6"><img class="img-polaroid" src="{{ STATIC_URL }}citajmi/img/slides/plakat.jpg" alt="Full responsive slide image" class="animated fadeInDownBig" /></div>
+            <div class="span6"><img class="img-polaroid" src="{{ STATIC_URL }}citajmi/img/slides/predstavljanje.jpg" alt="Full responsive slide image" class="animated fadeInDownBig" /></div>
             <div class="span6 caption animated fadeInUpBig">
               <h2>Predstavljanje kampanje "Čitaj mi!"</h2>
-              <h4>Kampanja će započeti u utorak, 02. travnja 2013. godine povodom Međunarodnog dana dječje knjige i rođendana Hansa Christiana Andersena!</h4>
-              <p>Uskoro više informacija...</p>
+              <h4>Kampanja je predstavljena u utorak, 02. travnja 2013. godine povodom Međunarodnog dana dječje knjige u Knjižnici Bogdan Ogrizović.</h4>
+              <p class="slide-text">
+                Otvorenje su proglasila djeca iz Centra "Slava Raškaj" i iz Dječjeg vrtića "Različak". Na otvorenju su bili i UNICEF-ova ambasadorica dobre volje Maja Vučić, glumac Filip Juričić i dječja spisateljica Željka Horvat Vukelja koji su pročitali nekoliko kratkih priča.
+              </p>
+              <h4><a href="{% url 'myflatpages:campain_start' %}">Opširnije</a></h4>
             </div>
           </div>
           <!--Slide #2-->
@@ -27,9 +30,7 @@
                 Slikovnica je prva djetetova knjiga u kojoj je priča obogaćena ilustracijama ili slikama.
                 Birajte za dijete samo najbolje slikovnice, odgovarajuće njegovoj dobi.
               </h4>
-              <h4>
-                <a href="{% url 'books:book_list' %}">Lista dobrih knjiga za bebe i djecu rane dobi</a>
-              </h4>
+              <h4><a href="{% url 'books:book_list' %}">Lista dobrih knjiga za bebe i djecu rane dobi</a></h4>
             </div>
           </div>
           <!--Slide #3-->

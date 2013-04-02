@@ -61,7 +61,7 @@
             <div class="nav-collapse collapse">
               <ul class="nav pull-right" id="main-menu">
                 <li class="dropdown">
-                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:about' %} {% active_reverse request 'myflatpages:partners' %} {% active_reverse request 'myflatpages:associates' %} {% active_reverse request 'myflatpages:materials' %} {% active_reverse request 'contact:contact' %}" id="about-drop" data-toggle="dropdown">Kampanja</a>
+                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:about' %} {% active_reverse request 'myflatpages:partners' %} {% active_reverse request 'myflatpages:associates' %} {% active_reverse request 'myflatpages:materials' %} {% active_reverse request 'contact:contact' %} {% url 'myflatpages:campain_start' %}" id="about-drop" data-toggle="dropdown">Kampanja</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
                     <li role="menuitem"><a href="{% url 'myflatpages:about' %}" tabindex="-1">O Kampanji</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:partners' %}" tabindex="-1">Partneri</a></li>

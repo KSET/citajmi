@@ -8,6 +8,8 @@ urlpatterns = patterns('django.contrib.flatpages.views',
     url(r'^suradnici/$', 'flatpage', {'url': '/associates/'}, name='associates'),
     url(r'^materijali/$', 'flatpage', {'url': '/materials/'}, name='materials'),
 
+    url(r'^predstavljanje-kampanje/$', 'flatpage', {'url': '/campain-start/'}, name='campain_start'),
+
     url(r'^citanje-naglas/$', 'flatpage', {'url': '/reading-aloud/'}, name='reading_aloud'),
     url(r'^razvoj-djeteta/$', 'flatpage', {'url': '/child-development/'}, name='child_development'),
     url(r'^citanje-s-pedijatrima/$', 'flatpage', {'url': '/reading-paediatrician/'}, name='reading_paediatrician'),
