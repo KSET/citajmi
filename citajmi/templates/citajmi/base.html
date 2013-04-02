@@ -61,7 +61,7 @@
             <div class="nav-collapse collapse">
               <ul class="nav pull-right" id="main-menu">
                 <li class="dropdown">
-                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:about' %}{% active_reverse request 'myflatpages:partners' %}{% active_reverse request 'myflatpages:associates' %}{% active_reverse request 'myflatpages:materials' %}{% active_reverse request 'contact:contact' %}" id="about-drop" data-toggle="dropdown">Kampanja</a>
+                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:about' %} {% active_reverse request 'myflatpages:partners' %} {% active_reverse request 'myflatpages:associates' %} {% active_reverse request 'myflatpages:materials' %} {% active_reverse request 'contact:contact' %}" id="about-drop" data-toggle="dropdown">Kampanja</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
                     <li role="menuitem"><a href="{% url 'myflatpages:about' %}" tabindex="-1">O Kampanji</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:partners' %}" tabindex="-1">Partneri</a></li>
@@ -71,7 +71,7 @@
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:reading_aloud' %}{% active_reverse request 'myflatpages:child_development' %}{% active_reverse request 'myflatpages:reading_paediatrician' %}" id="reading-drop" data-toggle="dropdown">Čitanje</a>
+                  <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:reading_aloud' %} {% active_reverse request 'myflatpages:child_development' %} {% active_reverse request 'myflatpages:reading_paediatrician' %}" id="reading-drop" data-toggle="dropdown">Čitanje</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="reading-drop">
                     <li role="menuitem"><a href="{% url 'myflatpages:reading_aloud' %}" tabindex="-1">O Čitanju naglas</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:child_development' %}" tabindex="-1">Kalendar razvoja djeteta</a></li>
@@ -79,7 +79,7 @@
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="" class="dropdown-toggle {% active_reverse request 'books:book_list' %}{% active_reverse request 'myflatpages:books_about' %}{% active_reverse request 'myflatpages:books_and_child' %}" id="books-drop" data-toggle="dropdown">Slikovnica</a>
+                  <a href="" class="dropdown-toggle {% active_reverse request 'books:book_list' %} {% active_reverse request 'myflatpages:books_about' %} {% active_reverse request 'myflatpages:books_and_child' %}" id="books-drop" data-toggle="dropdown">Slikovnica</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="books-drop">
                     <li role="menuitem"><a href="{% url 'myflatpages:books_about' %}" tabindex="-1">O Slikovnici</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:books_and_child' %}" tabindex="-1">Slikovnica i dijete</a></li>
@@ -87,14 +87,14 @@
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="" class="dropdown-toggle {% active_reverse request 'events:event_list' %}{% active_reverse request 'events:event_add' %}" id="events-drop" data-toggle="dropdown">Događanja</a>
+                  <a href="" class="dropdown-toggle {% active_reverse request 'events:event_list' %} {% active_reverse request 'events:event_add' %}" id="events-drop" data-toggle="dropdown">Događanja</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="events-drop">
                     <li role="menuitem"><a href="{% url 'events:event_list' %}" tabindex="-1">Aktualna događanja</a></li>
                     <li role="menuitem"><a href="{% url 'events:event_add' %}" tabindex="-1">Prijavite događaj</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="" class="dropdown-toggle {% active_reverse request 'gallery:album_list' %}{% active_reverse request 'gallery:entry_add' %}{% active_reverse request 'myflatpages:contest_prize' %}" id="gallery-drop" data-toggle="dropdown">Nagradna igra</a>
+                  <a href="" class="dropdown-toggle {% active_reverse request 'gallery:album_list' %} {% active_reverse request 'gallery:entry_add' %} {% active_reverse request 'myflatpages:contest_prize' %} {% active_reverse request 'myflatpages:contest_rules' %}" id="gallery-drop" data-toggle="dropdown">Nagradna igra</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="gallery-drop">
                     <li role="menuitem"><a href="{% url 'myflatpages:contest_prize' %}" tabindex="-1">Slikovnica tjedna</a></li>
                     <li role="menuitem"><a href="{% url 'gallery:entry_add' %}" tabindex="-1">Sudjelujte</a></li>
