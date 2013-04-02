@@ -28,7 +28,7 @@ class Event(models.Model):
     created = models.DateTimeField('vrijeme kreiranja', blank=True, default=timezone.now)
     objects = EventManager()
     class Meta:
-        ordering = ['start']
+        ordering = ['start', 'created']
         verbose_name = 'događaj'
         verbose_name_plural = 'događaji'
     def __unicode__(self):
