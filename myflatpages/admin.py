@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from django import forms
 from django.core.urlresolvers import reverse
@@ -8,7 +9,7 @@ from tinymce.widgets import TinyMCE
 class TinyMCEFlatPageAdmin(FlatPageAdmin):
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == 'content':
-            return forms.CharField(widget=TinyMCE(
+            return forms.CharField(label=u'Sadržaj', widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30},
                 mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list')},
             ))
