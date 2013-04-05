@@ -9,7 +9,7 @@ class EventManager(models.Manager):
     def current(self):
         from django.db.models import Q
         from django.utils import timezone
-        qs = self.filter(Q(public=True) & Q(start__gt=timezone.now().date()))
+        qs = self.filter(Q(public=True) & Q(end__gt=timezone.now().date()))
         if not qs.exists():
             qs = self.filter(Q(public=True))[:4]
         return qs

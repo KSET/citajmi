@@ -152,7 +152,13 @@
               {% url 'events:event_detail' slug=event.slug as event_url %}
               <div class="media row">
                 <div class="media-body span6">
-                  <h5 class="title media-heading"><a href="{{ event_url }}">{{ event.start|date:"d.m." }} {{ event.title }}</a></h5>
+                  <h5 class="title media-heading"><a href="{{ event_url }}">
+                    {% if event.start|date:"l, d. E Y." == event.end|date:"l, d. E Y." %}
+                      {{ event.start|date:"d.m." }} {{ event.title }}
+                    {% else %}
+                      {{ event.start|date:"d.m." }}-{{ event.end|date:"d.m." }} {{ event.title }}
+                    {% endif %}
+                  </a></h5>
                   <ul class="inline meta">
                     <li><i class="icon-calendar"></i> {{ event.start|date:"D \o\d H:i" }}</li>
                     <li><i class="icon-map-marker"></i> {{ event.location }}</li>

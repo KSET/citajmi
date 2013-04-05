@@ -27,7 +27,8 @@
         <h3 class="title media-heading">{{ event.title }}</h3>
         <!-- Meta details -->
         <ul class="inline meta muted">
-          {% if event.start.date == event.end.date %}
+          {# condition event.start.date == event.end.date wont work between 00:00 and 02:00 #}
+          {% if event.start|date:"l, d. E Y." == event.end|date:"l, d. E Y." %}
             <li><i class="icon-calendar"></i> {{ event.start|date:"l, d. E Y." }}</li>
             <li><i class="icon-time"></i>{{ event.start|date:"H:i" }} do {{ event.end|date:"H:i" }}</li>
             <li><i class="icon-map-marker"></i> {{ event.location }}</li>
