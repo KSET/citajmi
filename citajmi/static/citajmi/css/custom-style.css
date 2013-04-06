@@ -149,6 +149,9 @@ body .projects li.gallery[class*="span"] {
 body .projects li.gallery[class*="span"]:hover {
   border-bottom: none;
 }
+body .projects li.gallery .title {
+  margin: 0.5em 0 0 0em;
+}
 
 @media (max-width: 767px) {
   img.gallery-thumbnail {

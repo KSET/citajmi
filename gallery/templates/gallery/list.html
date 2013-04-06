@@ -6,7 +6,7 @@
 {% block highlighted %}
   <div class="container">
     <div class="row-fluid header">
-      <h2 class="page-title">{% block page_title %}<span>Galerija</span> <small>Tjedni albumi {{ year }}.</small>{% endblock %}</h2>
+      <h2 class="page-title">{% block page_title %}<span>Tjedni albumi {{ year }}.</span> <small></small>{% endblock %}</h2>
       <!--Archive links-->
       <ul class="nav nav-pills">
         {% for y in years %}
@@ -24,9 +24,10 @@
       <ul class="thumbnails block projects">
         {% for album in a.albums %}
           <li class="span3 gallery">
-            <a href="{% url 'gallery:album_detail' album_id=album.id %}" class="_tooltip" data-placement="top" data-original-title="{{ album.title }}" title="{{ album.title }}">
+            <a href="{% url 'gallery:album_detail' album_id=album.id %}">
               <img src="{{ album.get_cover_url }}" class="img-polaroid gallery-thumbnail" alt="{{ album.title }}">
             </a>
+            <h3 class="title"><small>{{ album.title }}</small></h3>
           </li>
         {% endfor %}
       </ul>
