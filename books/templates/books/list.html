@@ -37,6 +37,7 @@
                 </small>
               </h3>
               <p class="muted">{{ book.publisher }}</p>
+              <p class="muted">{{ book.authors.all|join:", " }}</p>
               <p class="muted">{{ book.info|truncatewords:50 }}</p>
             </div>
           </div>
