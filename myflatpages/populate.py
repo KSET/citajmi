@@ -15,6 +15,7 @@ def main():
         FlatPage(url='/about/', title=u'O Kampanji', content=stub_text),
         FlatPage(url='/partners/', title=u'Partneri', content=stub_text),
         FlatPage(url='/associates/', title=u'Suradnici', content=stub_text),
+        FlatPage(url='/sponsors/', title=u'Donatori', content=stub_text),
         FlatPage(url='/materials/', title=u'Materijali - Preuzmite materijale', content=stub_text),
 
         FlatPage(url='/campain-start/', title=u'Predstavljanje kampanje', content=stub_text),

@@ -6,6 +6,7 @@ urlpatterns = patterns('django.contrib.flatpages.views',
     url(r'^kampanja/$', 'flatpage', {'url': '/about/'}, name='about'),
     url(r'^partneri/$', 'flatpage', {'url': '/partners/'}, name='partners'),
     url(r'^suradnici/$', 'flatpage', {'url': '/associates/'}, name='associates'),
+    url(r'^donatori/$', 'flatpage', {'url': '/sponsors/'}, name='sponsors'),
     url(r'^materijali/$', 'flatpage', {'url': '/materials/'}, name='materials'),
 
     url(r'^predstavljanje-kampanje/$', 'flatpage', {'url': '/campain-start/'}, name='campain_start'),
