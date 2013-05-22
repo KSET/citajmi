@@ -48,7 +48,8 @@ def make_archive_links():
         for m in range(start, end, -1):
             date = datetime.date(year=y, month=m, day=1)
             count = Event.objects.month(y, m).count()
-            months.append((date, count))
+            if count:
+                months.append((date, count))
     return months
 
 def event_list(request):
