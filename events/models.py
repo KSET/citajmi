@@ -12,7 +12,7 @@ class EventManager(models.Manager):
         qs = self.filter(Q(public=True) & Q(end__gt=timezone.now().date()))
         if not qs.exists():
             qs = self.filter(Q(public=True))[:4]
-        return qs
+        return qs.order_by('-created')
 
     def month(self, year, month):
         from django.db.models import Q
