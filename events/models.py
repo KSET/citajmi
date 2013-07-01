@@ -9,10 +9,10 @@ class EventManager(models.Manager):
     def current(self):
         from django.db.models import Q
         from django.utils import timezone
-        qs = self.filter(Q(public=True) & Q(end__gt=timezone.now().date()))
+        qs = self.filter(Q(public=True) & Q(end__gt=timezone.now().date())).order_by('-created')
         if not qs.exists():
-            qs = self.filter(Q(public=True))[:4]
-        return qs.order_by('-created')
+            qs = self.filter(Q(public=True)).order_by('-created')[:4]
+        return qs
 
     def month(self, year, month):
         from django.db.models import Q
