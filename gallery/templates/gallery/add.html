@@ -35,6 +35,9 @@
             za najmlađu djecu.
           </p>
           <p>
+            Pobjedničke fotografije nagradnog natječaja Hrvatskoga čitateljskog društva u okviru kampanje pod nazivom "Smiješak... Čitaj mi!" možete pogledati <a href="{% url 'gallery:album_detail' album_id=24 %}">ovdje</a>
+          </p>
+          <p>
             Video snimke (ne duže od 1 minute) učitajte na servis YouTube, a nama pošaljite linkove.<br>
             Detaljnija pravila nagradne igre pogledajte <a href="{% url 'myflatpages:contest_rules' %}" tabindex="-1">ovdje</a>
           </p>
@@ -60,9 +63,6 @@
         {{ accept_form|bootstrap }}
         <div class="form-actions">
           <input type="submit" class="btn btn-primary" value="Pošaljite">
-        </div>
-        <div>
-          Pobjedničke fotografije nagradnog natječaja Hrvatskoga čitateljskog društva u okviru kampanje pod nazivom "Smiješak... Čitaj mi!" možete pogledati <a href="{% url 'gallery:album_detail' album_id=24 %}">ovdje</a>
         </div>
       </form>
     </div>
