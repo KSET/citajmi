@@ -4,6 +4,7 @@
 *.pyo
 *.egg-info
 *.svn
+*.sublime-*
 static/*
 media/*
 log/*
