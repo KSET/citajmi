@@ -114,7 +114,7 @@ INSTALLED_APPS = (
 )
 
 
-GRAPPELLI_ADMIN_TITLE = 'Citajmi.info'
+GRAPPELLI_ADMIN_TITLE = '<a href="/">Citajmi.info</a>'
 GRAPPELLI_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
 
 # Main FileBrowser Directory 'uploads/'. Leave empty in order to browse all from MEDIA_ROOT
