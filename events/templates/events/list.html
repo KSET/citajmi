@@ -43,7 +43,11 @@
                 {% if event.start|date:"l, d. E Y." == event.end|date:"l, d. E Y." %}
                   {{ event.start|date:"d.m.Y." }} {{ event.title }}
                 {% else %}
-                  {{ event.start|date:"d.m." }}-{{ event.end|date:"d.m.Y." }} {{ event.title }}
+                  {% if event.start|date:"Y" == event.end|date:"Y" %}
+                    {{ event.start|date:"d.m." }}-{{ event.end|date:"d.m.Y." }} {{ event.title }}
+                  {% else %}
+                    {{ event.start|date:"d.m.Y." }}-{{ event.end|date:"d.m.Y." }} {{ event.title }}
+                  {% endif %}
                 {% endif %}
               </a></h4>
               <ul class="inline meta muted">
