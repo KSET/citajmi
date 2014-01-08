@@ -41,9 +41,9 @@
             <div class="media-body span6">
               <h4 class="title media-heading"><a href="{{ event_url }}">
                 {% if event.start|date:"l, d. E Y." == event.end|date:"l, d. E Y." %}
-                  {{ event.start|date:"d.m." }} {{ event.title }}
+                  {{ event.start|date:"d.m.Y." }} {{ event.title }}
                 {% else %}
-                  {{ event.start|date:"d.m." }}-{{ event.end|date:"d.m." }} {{ event.title }}
+                  {{ event.start|date:"d.m." }}-{{ event.end|date:"d.m.Y." }} {{ event.title }}
                 {% endif %}
               </a></h4>
               <ul class="inline meta muted">
