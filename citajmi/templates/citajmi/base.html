@@ -66,6 +66,7 @@
                   <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:about' %} {% active_reverse request 'myflatpages:partners' %} {% active_reverse request 'myflatpages:associates' %} {% active_reverse request 'myflatpages:materials' %} {% active_reverse request 'contact:contact' %} {% url 'myflatpages:campain_start' %}" id="about-drop" data-toggle="dropdown">Kampanja</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
                     <li role="menuitem"><a href="{% url 'myflatpages:about' %}" tabindex="-1">O Kampanji</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:about_eng' %}" tabindex="-1">Campaign &nbsp;(eng)</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:partners' %}" tabindex="-1">Partneri</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:associates' %}" tabindex="-1">Suradnici</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:sponsors' %}" tabindex="-1">Pokrovitelji</a></li>

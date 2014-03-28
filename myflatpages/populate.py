@@ -13,6 +13,7 @@ def main():
         FlatPage(url='/home/', template_name='flatpages/home.html', title=u'Naslovna', content=stub_text),
 
         FlatPage(url='/about/', title=u'O Kampanji', content=stub_text),
+        FlatPage(url='/about-eng/', title=u'Campaign', content=stub_text),
         FlatPage(url='/partners/', title=u'Partneri', content=stub_text),
         FlatPage(url='/associates/', title=u'Suradnici', content=stub_text),
         FlatPage(url='/sponsors/', title=u'Pokrovitelji', content=stub_text),
