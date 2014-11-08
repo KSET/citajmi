@@ -30,18 +30,22 @@ class Event(models.Model):
     public = models.BooleanField('odobren', default=False, help_text='Da li je događaj objavljen na stranici')
     created = models.DateTimeField('vrijeme kreiranja', blank=True, default=timezone.now)
     objects = EventManager()
+
     class Meta:
         ordering = ['start', 'created']
         verbose_name = 'događaj'
         verbose_name_plural = 'događaji'
+
     def __unicode__(self):
         return self.title
 
 
 class EventImg(ImageModel):
     event = models.OneToOneField(Event, verbose_name='događaj', related_name='image')
+
     class Meta:
         verbose_name = 'slika'
         verbose_name_plural = 'slike'
+
     def __unicode__(self):
         return unicode(self.event)

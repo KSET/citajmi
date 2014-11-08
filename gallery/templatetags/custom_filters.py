@@ -4,6 +4,7 @@ import re
 
 register = template.Library()
 
+
 @register.filter
 # converts youtube URL into embed URL
 def youtube_embed_url(url):
@@ -14,6 +15,7 @@ def youtube_embed_url(url):
     return ''
 
 youtube_embed_url.is_safe = True
+
 
 @register.filter
 @stringfilter

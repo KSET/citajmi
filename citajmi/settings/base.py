@@ -46,7 +46,7 @@ STATIC_URL = '/static/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'compressor.finders.CompressorFinder',
 )
 STATICFILES_DIRS = (
@@ -56,7 +56,7 @@ STATICFILES_DIRS = (
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -137,32 +137,34 @@ FILEBROWSER_ADMIN_THUMBNAIL = 'admin_thumbnail'
 
 
 FILEBROWSER_SELECT_FORMATS = {
-    'File': ['Folder','Document',],
-    'Image': ['Folder','Image',],
-    'Media': ['Video','Sound'],
+    'File': ['Folder', 'Document'],
+    'Image': ['Folder', 'Image'],
+    'Media': ['Video', 'Sound'],
     'Document': ['Document'],
     # for TinyMCE we can also define lower-case items
     'image': ['Image'],
-    'file': ['Folder','Image','Document',],
+    'file': ['Folder', 'Image', 'Document'],
 }
 
 
 # tinymce settings, add/remove buttons and so on
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': "advanced",
-    'theme_advanced_toolbar_location' : "top",
-    'theme_advanced_resizing' : True,
-    'plugins' : 'table,contextmenu,paste,autoresize,media,lists,style',
-    # 'height' : 600,
-    # 'width' : 800,
-    'theme_advanced_buttons1': "formatselect,style,bold,italic,underline,separator,bullist,separator,outdent,indent,separator,undo,redo",
-    'theme_advanced_buttons2': "cleanup,code,separator,lists,pasteword,table,contextmenu,media,style,image,link",
-    # 'theme_advanced_buttons3': "",
+    'theme': 'advanced',
+    'theme_advanced_toolbar_location': 'top',
+    'theme_advanced_resizing': True,
+    'plugins': 'table,contextmenu,paste,autoresize,media,lists,style',
+    # 'height': 600,
+    # 'width': 800,
+    'theme_advanced_buttons1': ('formatselect,style,bold,italic,underline,separator,bullist,separator,outdent,'
+                                'indent,separator,undo,redo'),
+    'theme_advanced_buttons2': 'cleanup,code,separator,lists,pasteword,table,contextmenu,media,style,image,link',
+    # 'theme_advanced_buttons3': '',
 }
 
 import photologue
 import time
 from django.template.defaultfilters import slugify
+
 
 def PHOTOLOGUE_PATH(instance, filename):
     typ = type(instance)
@@ -179,7 +181,8 @@ def PHOTOLOGUE_PATH(instance, filename):
         extension = os.path.splitext(filename.lower())[1]   # .jpg
         filename = '%s%s' % (slugify(instance.book.title), extension)
     elif typ is EntryImg:
-        folder = time.strftime('galleryimgs/%Y/W/').replace('W', '%02d' % int(time.strftime('%W'))) # %W week in year 1-53
+        # %W week in year 1-53
+        folder = time.strftime('galleryimgs/%Y/W/').replace('W', '%02d' % int(time.strftime('%W')))
         extension = os.path.splitext(filename.lower())[1]   # .jpg
         filename = '%s-%d%s' % (slugify(instance.entry.full_name), instance.entry.id, extension)
     else:

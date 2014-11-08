@@ -2,6 +2,7 @@ import logging
 import httpagentparser
 import re
 
+
 class LoggingMiddleware(object):
 
     def process_response(self, request, response):
@@ -13,7 +14,8 @@ class LoggingMiddleware(object):
             agent_info = '"%s %s"' % (agent['browser'].get('name', '-'), agent['browser'].get('version', '-'))
         except:
             agent_info = '-'
-        entry = ('%s "%s %s" %s %s %s' % (request.META.get('REMOTE_ADDR', '-'), request.method, request.path, response.status_code, len(response.content), agent_info))
+        entry = ('%s "%s %s" %s %s %s' % (request.META.get('REMOTE_ADDR', '-'), request.method, request.path,
+                                          response.status_code, len(response.content), agent_info))
 
         logger = logging.getLogger('simplelogger')
         code = str(response.status_code)

@@ -3,14 +3,18 @@ from django import forms
 from events.models import Event, EventImg
 from events import settings
 
+
 class EventForm(forms.ModelForm):
 
     def clean_title(self):
         return self.cleaned_data.get('title', '').strip()
+
     def clean_org(self):
         return self.cleaned_data.get('org', '').strip()
+
     def clean_location(self):
         return self.cleaned_data.get('location', '').strip()
+
     def clean_info(self):
         return self.cleaned_data.get('info', '').strip()
 

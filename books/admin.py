@@ -1,17 +1,20 @@
 from django.contrib import admin
 from books.models import Publisher, Author, Book, BookImg
 
+
 class PublisherAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
 
 admin.site.register(Publisher, PublisherAdmin)
 
+
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name')
     search_fields = ('last_name', 'first_name')
 
 admin.site.register(Author, AuthorAdmin)
+
 
 # Define an inline admin descriptor
 class BookImgInline(admin.StackedInline):
@@ -20,6 +23,7 @@ class BookImgInline(admin.StackedInline):
     verbose_name_plural = 'slika'
     classes = ('collapse open',)
     inline_classes = ('collapse open',)
+
 
 class BookAdmin(admin.ModelAdmin):
     def admin_authors_display(self, obj):

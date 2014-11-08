@@ -2,14 +2,16 @@
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from gallery.models import Album, AlbumEntry, EntryImg
+from gallery.models import Album
 from gallery.forms import AlbumEntryForm, EntryImgForm, AcceptForm
 from django.utils import timezone
 from datetime import date
 
+
 def album_list(request):
     year = timezone.now().year
     return album_archive(request, year)
+
 
 #! not a view
 def make_archive_links():
@@ -19,9 +21,10 @@ def make_archive_links():
         years.append(qs[0].date.year)
     else:
         years.append(timezone.now().year)
-    for y in range(years[0] +1, timezone.now().year +1):
+    for y in range(years[0] + 1, timezone.now().year + 1):
         years.append(y)
     return years
+
 
 def album_archive(request, year):
     year = int(year)
@@ -39,6 +42,7 @@ def album_archive(request, year):
         'years': make_archive_links(),
     })
 
+
 def album_detail(request, album_id):
     album = get_object_or_404(Album, id=album_id)
     if not album.public:
@@ -48,6 +52,7 @@ def album_detail(request, album_id):
         'year': album.date.year,
         'years': make_archive_links(),
     })
+
 
 def entry_add(request):
     if request.method == 'POST':

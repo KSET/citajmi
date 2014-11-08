@@ -2,6 +2,7 @@
 from events import settings
 from django.core.mail import send_mail
 
+
 def send_mail_notification(event):
     subject = settings.EMAIL_SUBJECT
     sender = settings.SENDER_MAIL

@@ -1,5 +1,6 @@
 from django import forms
 
+
 class ContactForm(forms.Form):
     # custom css class for jQuery selector
     CUSTOM_CLASS = 'contact-form-input'

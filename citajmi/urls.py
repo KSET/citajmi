@@ -7,9 +7,8 @@ from filebrowser.sites import site
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'citajmi.views.home', name='home'),
+urlpatterns = patterns(
+    '',
     url(r'^uvodna/', 'landing.views.landing_page'),
     url(r'', include('myflatpages.urls', namespace='myflatpages', app_name='myflatpages')),
     url(r'^kontakt/', include('contact.urls', namespace='contact', app_name='contact')),

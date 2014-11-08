@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('django.contrib.flatpages.views',
+urlpatterns = patterns(
+    'django.contrib.flatpages.views',
     url(r'^naslovna/$', 'flatpage', {'url': '/home/'}, name='home'),
 
     url(r'^kampanja/$', 'flatpage', {'url': '/about/'}, name='about'),

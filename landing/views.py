@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from landing.forms import SkipForm
 
+
 def landing_page(request):
     if request.method == 'POST':
         form = SkipForm(request.POST)

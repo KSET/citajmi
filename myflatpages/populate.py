@@ -3,12 +3,13 @@
 import os
 import sys
 
+
 # populate db with predifined flatpages
 def main():
     from django.contrib.flatpages.models import FlatPage
     from django.contrib.sites.models import Site
     site, created = Site.objects.get_or_create(domain='citajmi.info', name='citajmi.info')
-    stub_text='<h3>Podstranica u izradi</h3><p>Posjetite ju ponovo za par dana!</p>'
+    stub_text = '<h3>Podstranica u izradi</h3><p>Posjetite ju ponovo za par dana!</p>'
     pages = (
         FlatPage(url='/home/', template_name='flatpages/home.html', title=u'Naslovna', content=stub_text),
 
