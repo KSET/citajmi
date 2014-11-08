@@ -78,6 +78,7 @@
                   <a href="" class="dropdown-toggle {% active_reverse request 'myflatpages:reading_aloud' %} {% active_reverse request 'myflatpages:child_development' %} {% active_reverse request 'myflatpages:reading_paediatrician' %}" id="reading-drop" data-toggle="dropdown">Čitanje</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="reading-drop">
                     <li role="menuitem"><a href="{% url 'myflatpages:reading_aloud' %}" tabindex="-1">O Čitanju naglas</a></li>
+                    <li role="menuitem"><a href="{% url 'myflatpages:reading_sleep' %}" tabindex="-1">Čitanje prije spavanja</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:child_development' %}" tabindex="-1">Kalendar razvoja djeteta</a></li>
                     <li role="menuitem"><a href="{% url 'myflatpages:reading_paediatrician' %}" tabindex="-1">Čitajmo naglas s pedijatrima</a></li>
                   </ul>

@@ -23,6 +23,7 @@ def main():
         FlatPage(url='/campain-start/', title=u'Predstavljanje kampanje', content=stub_text),
 
         FlatPage(url='/reading-aloud/', title=u'Čitanje naglas', content=stub_text),
+        FlatPage(url='/reading-before-sleep/', title=u'Čitanje prije spavanja', content=stub_text),
         FlatPage(url='/child-development/', title=u'Kalendar razvoja djeteta', content=stub_text),
         FlatPage(url='/reading-paediatrician/', title=u'Čitajmo naglas s pedijatrima', content=stub_text),
 

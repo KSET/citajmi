@@ -14,6 +14,7 @@ urlpatterns = patterns(
     url(r'^predstavljanje-kampanje/$', 'flatpage', {'url': '/campain-start/'}, name='campain_start'),
 
     url(r'^citanje-naglas/$', 'flatpage', {'url': '/reading-aloud/'}, name='reading_aloud'),
+    url(r'^citanje-prije-spavanja/$', 'flatpage', {'url': '/reading-before-sleep/'}, name='reading_sleep'),
     url(r'^razvoj-djeteta/$', 'flatpage', {'url': '/child-development/'}, name='child_development'),
     url(r'^citanje-s-pedijatrima/$', 'flatpage', {'url': '/reading-paediatrician/'}, name='reading_paediatrician'),
 
