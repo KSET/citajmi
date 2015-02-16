@@ -69,6 +69,10 @@ $(document).ready(function() {
     }
     // decorate images
     $('#flatpage_content img').addClass('img-polaroid');
+    // eng nav title
+    if (window.location.pathname == '/campaign/') {
+      $('.block-title.sub-title span').html('Content');
+    }
 });
 </script>
 {% endblock %}
