@@ -3,6 +3,7 @@
 import os
 import sys
 
+
 # populate db with custom photo sizes
 def main():
     from photologue.models import PhotoSize

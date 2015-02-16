@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from events.models import Event, EventImg
+
 
 # Define an inline admin descriptor
 class EventImgInline(admin.StackedInline):
@@ -8,6 +10,7 @@ class EventImgInline(admin.StackedInline):
     verbose_name_plural = 'slika'
     classes = ('collapse open',)
     inline_classes = ('collapse open',)
+
 
 class EventAdmin(admin.ModelAdmin):
     def admin_image_display(self, obj):

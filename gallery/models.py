@@ -4,11 +4,13 @@ from django.utils import timezone
 from photologue.models import ImageModel
 from gallery.templatetags.custom_filters import youtube_thumbnail_url
 
+
 class AlbumEntry(models.Model):
     full_name = models.CharField('ime i prezime', max_length=60)
     address = models.CharField('adresa', max_length=100)
     email = models.EmailField('kontakt email')
-    video = models.URLField('video snimka', blank=True, null=True, help_text='Internet adresa (link) vaše video snimke na YouTube-u')
+    video = models.URLField('video snimka', blank=True, null=True,
+                            help_text='Internet adresa (link) vaše video snimke na YouTube-u')
     cover = models.BooleanField('naslovna', default=False, help_text='Da li slika/video predstavlja cijeli album')
     public = models.BooleanField('odobren', default=False, help_text='Da li je unos objavljen u albumu')
     created = models.DateTimeField('vrijeme kreiranja', blank=True, default=timezone.now)
@@ -23,15 +25,18 @@ class AlbumEntry(models.Model):
         ordering = ['-created']
         verbose_name = 'stavka albuma'
         verbose_name_plural = 'stavke albuma'
+
     def __unicode__(self):
         return u'[%s] %s (%s)' % (self.created.strftime('%Y-%m-%d'), self.full_name, 'video' if self.video else 'slika')
 
 
 class EntryImg(ImageModel):
     entry = models.OneToOneField(AlbumEntry, verbose_name='stavka albuma', related_name='image')
+
     class Meta:
         verbose_name = 'slika'
         verbose_name_plural = 'slike'
+
     def __unicode__(self):
         return unicode(self.entry)
 
@@ -64,5 +69,6 @@ class Album(models.Model):
         ordering = ['-date']
         verbose_name = u'album'
         verbose_name_plural = u'albumi'
+
     def __unicode__(self):
         return u'[%s] %s' % (self.date.strftime('%Y-%m-%d'), self.title)

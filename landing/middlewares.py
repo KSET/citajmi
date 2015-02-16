@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from landing.views import landing_page
 
+
 class LandingPageMiddleware:
 
     def process_request(self, request):

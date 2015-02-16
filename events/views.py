@@ -8,6 +8,7 @@ from events.utils import send_mail_notification
 import datetime
 import time
 
+
 def event_add(request):
     if request.method == 'POST':
         event_form = EventForm(request.POST)
@@ -31,9 +32,11 @@ def event_add(request):
         'img_form': img_form,
     })
 
+
 def make_archive_links():
     """Make a list of months to show archive links."""
-    if not Event.objects.exists(): return []
+    if not Event.objects.exists():
+        return []
     # set up vars
     year, month = time.localtime()[:2]
     first = Event.objects.order_by('start')[0]
@@ -43,14 +46,17 @@ def make_archive_links():
     # loop over years and months
     for y in range(year, fyear-1, -1):
         start, end = 12, 0
-        if y == year: start = month
-        if y == fyear: end = fmonth-1
+        if y == year:
+            start = month
+        if y == fyear:
+            end = fmonth-1
         for m in range(start, end, -1):
             date = datetime.date(year=y, month=m, day=1)
             count = Event.objects.month(y, m).count()
             if count:
                 months.append((date, count))
     return months
+
 
 def event_list(request):
     archive = 'a' in request.GET
@@ -59,6 +65,7 @@ def event_list(request):
         'months': make_archive_links() if archive else [],
         'events': Event.objects.current(),
     })
+
 
 def event_archive(request, year, month):
     try:
@@ -71,6 +78,7 @@ def event_archive(request, year, month):
         'months': make_archive_links(),
         'events': Event.objects.month(year, month),
     })
+
 
 def event_detail(request, slug):
     event = get_object_or_404(Event, slug=slug)

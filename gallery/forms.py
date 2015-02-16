@@ -4,12 +4,15 @@ from gallery.models import AlbumEntry, EntryImg
 from gallery import settings
 from gallery.templatetags.custom_filters import youtube_embed_url
 
+
 class AlbumEntryForm(forms.ModelForm):
 
     def clean_full_name(self):
         return self.cleaned_data.get('full_name', '').strip()
+
     def clean_address(self):
         return self.cleaned_data.get('address', '').strip()
+
     def clean_video(self):
         data = self.cleaned_data.get('video', '')
         if data and not youtube_embed_url(data):
@@ -18,7 +21,8 @@ class AlbumEntryForm(forms.ModelForm):
 
     def custom_is_valid(self, request):
         video = self.data.get('video', '')
-        if not self.is_valid(): return False
+        if not self.is_valid():
+            return False
         if not video and 'image' not in request.FILES:
             errors = self._errors.setdefault(forms.forms.NON_FIELD_ERRORS, forms.util.ErrorList())
             errors.append(u'Morate poslati fotografiju ili video snimku.')
@@ -51,5 +55,8 @@ class EntryImgForm(forms.ModelForm):
         model = EntryImg
         fields = ('image',)
 
+
 class AcceptForm(forms.Form):
-    accept = forms.BooleanField(required=True, label=u'Potvrđujem da sam autor fotografije/video snimke i dozvoljavam objavljivanje na internet stranicama kampanje "Čitaj mi!".')
+    label = (u'Potvrđujem da sam autor fotografije/video snimke i dozvoljavam objavljivanje '
+             u'na internet stranicama kampanje "Čitaj mi!".')
+    accept = forms.BooleanField(required=True, label=label)

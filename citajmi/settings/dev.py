@@ -20,6 +20,8 @@ DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
 # http://docs.python.org/2/library/warnings.html#warnings.showwarning
 import warnings
 import traceback
+
+
 def custom_showwarning(message, category, filename, lineno, **kwargs):
     warnings.formatwarning(message, category, filename, lineno)
     # traceback.print_exc()

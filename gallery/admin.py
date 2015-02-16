@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from gallery.models import Album, AlbumEntry, EntryImg
 
+
 class EntryAlbumFilter(SimpleListFilter):
     # Human-readable title which will be displayed in the filter sidebar
     title = 'svrstan u album'
@@ -67,10 +68,11 @@ class AlbumEntryAdmin(admin.ModelAdmin):
     def admin_type_display(self, obj):
         return bool(obj.video)
     admin_type_display.short_description = 'video'
-    admin_type_display.admin_order_field  = 'video'
+    admin_type_display.admin_order_field = 'video'
     admin_type_display.boolean = True
 
-    list_display = ('created', 'full_name', 'public', 'cover', 'admin_album_display', 'admin_type_display', 'admin_image_display')
+    list_display = ('created', 'full_name', 'public', 'cover',
+                    'admin_album_display', 'admin_type_display', 'admin_image_display')
     search_fields = ('full_name',)
     list_filter = ('public', 'cover', EntryAlbumFilter, EntryTypeFilter, 'created')
     date_hierarchy = 'created'
@@ -101,6 +103,7 @@ class AlbumAdmin(admin.ModelAdmin):
         return self.obj
 
     filter_horizontal = ('entries',)
+
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         if db_field.name == 'entries':
             kwargs['queryset'] = AlbumEntry.objects.filter(public=True, albums=None)
@@ -111,7 +114,8 @@ class AlbumAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('title', 'date', 'entries', 'public'),
-            'description': u'Za album se mogu izabrati samo stavke albuma (slika/video) koje su odobrene i koje ne pripadaju ni jednom drugom albumu.',
+            'description': (u'Za album se mogu izabrati samo stavke albuma (slika/video) koje su odobrene '
+                            u'i koje ne pripadaju ni jednom drugom albumu.'),
         }),
     )
 
