@@ -101,6 +101,7 @@ INSTALLED_APPS = (
     'south',
     'tagging',
     'compressor',
+    'sorl.thumbnail',
     'django.contrib.admin',
 
     'citajmi',

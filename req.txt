@@ -23,4 +23,5 @@ httpagentparser==1.2.1
 psycopg2==2.4.6
 pytz==2012j
 six==1.2.0
+sorl-thumbnail==12.2
 wsgiref==0.1.2
