@@ -34,12 +34,6 @@ class AlbumEntry(models.Model):
 class EntryImg(ImageModel):
     entry = models.OneToOneField(AlbumEntry, verbose_name='stavka albuma', related_name='image')
 
-    def get_sorl(self):
-        return {
-            'thumbnail': get_thumbnail(self.image, '300x225', crop='center'),
-            'display': get_thumbnail(self.image, '1024x768', crop='center'),
-        }
-
     class Meta:
         verbose_name = 'slika'
         verbose_name_plural = 'slike'
