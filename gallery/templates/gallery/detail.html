@@ -1,6 +1,6 @@
 {% extends "gallery/list.html" %}
 {% load url from future %}
-{% load custom_filters thumbnail %}
+{% load custom_filters %}
 
 {% block extra_css %}
   <link href="{{ STATIC_URL }}citajmi/css/jquery.fancybox.css" rel="stylesheet">
@@ -16,12 +16,8 @@
         {% with album.get_images.count as total %}
           {% for entry in album.get_images %}
             <li class="span3 gallery">
-              {% thumbnail entry.image "300x225" crop="center" as img_thumb %}
-              <a class="various fancybox" rel="gallery1" title="{{ forloop.counter }}/{{ total }}" href="{{ img_thumb.url }}">
-              {% endthumbnail %}
-                {% thumbnail entry.image "1024x768" crop="center" as img_display %}
-                <img src="{{ img_display.url }}" class="img-polaroid gallery-thumbnail" alt="Slika iz albuma">
-                {% endthumbnail %}
+              <a class="various fancybox" rel="gallery1" title="{{ forloop.counter }}/{{ total }}" href="{{ entry.get_sorl.display.url }}">
+                <img src="{{ entry.get_sorl.thumbnail.url.url }}" class="img-polaroid gallery-thumbnail" alt="Slika iz albuma">
               </a>
             </li>
           {% endfor %}

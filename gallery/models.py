@@ -2,6 +2,7 @@
 from django.db import models
 from django.utils import timezone
 from photologue.models import ImageModel
+from sorl.thumbnail import get_thumbnail
 from gallery.templatetags.custom_filters import youtube_thumbnail_url
 
 
@@ -32,6 +33,12 @@ class AlbumEntry(models.Model):
 
 class EntryImg(ImageModel):
     entry = models.OneToOneField(AlbumEntry, verbose_name='stavka albuma', related_name='image')
+
+    def get_sorl(self):
+        return {
+            'thumbnail': get_thumbnail(self.image, '300x225', crop='center'),
+            'display': get_thumbnail(self.image, '1024x768', crop='center'),
+        }
 
     class Meta:
         verbose_name = 'slika'
