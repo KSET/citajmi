@@ -163,6 +163,8 @@ TINYMCE_DEFAULT_CONFIG = {
 
 import photologue
 import time
+import random
+from hashlib import md5
 from django.template.defaultfilters import slugify
 
 
@@ -184,7 +186,7 @@ def PHOTOLOGUE_PATH(instance, filename):
         # %W week in year 1-53
         folder = time.strftime('galleryimgs/%Y/W/').replace('W', '%02d' % int(time.strftime('%W')))
         extension = os.path.splitext(filename.lower())[1]   # .jpg
-        filename = '%s-%d%s' % (slugify(instance.entry.full_name), instance.entry.id, extension)
+        filename = md5(str(time())+str(random.random()*1000)).hexdigest() + extension
     else:
         folder = 'photos'
     return os.path.join(photologue.models.PHOTOLOGUE_DIR, folder, filename)
