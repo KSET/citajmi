@@ -16,13 +16,13 @@
         {% with album.get_images.count as total %}
           {% for entry in album.get_images %}
             <li class="span3 gallery">
-              {% thumbnail entry.image.image "1024x768" crop="center" as img_display %}
-              <a class="various fancybox" rel="gallery1" title="{{ forloop.counter }}/{{ total }}" href="{{ img_display.url }}">
-              {% endthumbnail %}
+              {% thumbnail entry.image.image "1024x768" crop="center" quality=99 as img_display %}
                 {% thumbnail entry.image.image "300x225" crop="center" as img_thumb %}
-                <img src="{{ img_thumb.url }}" class="img-polaroid gallery-thumbnail" alt="Slika iz albuma">
+                  <a class="various fancybox" rel="gallery1" title="{{ forloop.counter }}/{{ total }}" href="{{ img_display.url }}">
+                    <img src="{{ img_thumb.url }}" class="img-polaroid gallery-thumbnail" alt="Slika iz albuma">
+                  </a>
                 {% endthumbnail %}
-              </a>
+              {% endthumbnail %}
             </li>
           {% endfor %}
         {% endwith %}

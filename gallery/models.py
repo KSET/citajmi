@@ -2,7 +2,6 @@
 from django.db import models
 from django.utils import timezone
 from photologue.models import ImageModel
-from sorl.thumbnail import get_thumbnail
 from gallery.templatetags.custom_filters import youtube_thumbnail_url
 
 
