@@ -186,7 +186,7 @@ def PHOTOLOGUE_PATH(instance, filename):
         # %W week in year 1-53
         folder = time.strftime('galleryimgs/%Y/W/').replace('W', '%02d' % int(time.strftime('%W')))
         extension = os.path.splitext(filename.lower())[1]   # .jpg
-        filename = md5(str(time())+str(random.random()*1000)).hexdigest() + extension
+        filename = md5(str(time.time())+str(random.random()*1000)).hexdigest() + extension
     else:
         folder = 'photos'
     return os.path.join(photologue.models.PHOTOLOGUE_DIR, folder, filename)
