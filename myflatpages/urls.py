@@ -23,4 +23,6 @@ urlpatterns = patterns(
 
     url(r'^pravila-nagradne-igre/$', 'flatpage', {'url': '/contest-rules/'}, name='contest_rules'),
     url(r'^slikovnica-tjedna/$', 'flatpage', {'url': '/contest-prize/'}, name='contest_prize'),
+
+    url(r'^pismo-podrske/$', 'flatpage', {'url': '/support-letter/'}, name='support_letter'),
 )

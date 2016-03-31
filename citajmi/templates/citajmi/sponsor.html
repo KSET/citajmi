@@ -2,12 +2,13 @@
 <div id="sponsors" class="block margin-top-large">
   <h3 class="block-title" id="sponsor"><span>Pokrovitelji</span></h3>
   <div class="team-member">
+
     <div class="span2 first">
       <a href="http://www.mspm.hr/" target="_blank" rel="nofollow">
         <img src="{{ STATIC_URL }}citajmi/img/sponsors/mspm.png" class="img-polaroid" alt="">
       </a>
     </div>
-    <div class="span4">
+    <div class="span2">
       <h3>Ministarstvo socijalne politike i mladih</h3>
       {% comment %}
       <h5>Potpredsjednica Vlade i ministrica socijalne politike i mladih</h5>
@@ -17,14 +18,26 @@
       </div>
       {% endcomment %}
     </div>
+
     <div class="span2 other">
       <a href="http://www.euread.com/" target="_blank" rel="nofollow">
         <img src="{{ STATIC_URL }}citajmi/img/sponsors/euread.jpg" class="img-polaroid" alt="">
       </a>
     </div>
-    <div class="span4">
+    <div class="span2">
       <h3>EU Read</h3>
       <h5>Kampanja "Čitaj mi!" pokrenuta je u Europskoj godini čitanja naglas koju je proglasila Europska organizacija za promicanje čitanja "EU READ".</h5>
     </div>
+
+    <div class="span2 other">
+      <a href="{% url 'myflatpages:support_letter' %}">
+        <img src="{{ STATIC_URL }}citajmi/img/sponsors/logo.jpg" class="img-polaroid" alt="">
+      </a>
+    </div>
+    <div class="span2">
+      <h3>Podrška predsjednice</h3>
+      <h5>Pismo podrške predsjednice Republike Hrvatske Kolinde Grabar-Kitarović</h5>
+    </div>
+
   </div>
 </div>
