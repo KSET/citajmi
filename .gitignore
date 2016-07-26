@@ -7,6 +7,7 @@
 *.sublime-*
 static/*
 media/*
+data/*
 log/*
 citajmi/settings/prod.py
 todo.txt
