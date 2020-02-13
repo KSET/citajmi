@@ -41,7 +41,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'publisher', 'admin_authors_display', 'category', 'admin_image_display')
     search_fields = ('title', 'publisher__name', 'authors__first_name', 'authors__last_name')
     list_filter = ('category',)
-    # filter_horizontal = ('authors',)
+    filter_horizontal = ('authors',)
 
     inlines = (BookImgInline,)
 
