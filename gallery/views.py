@@ -13,7 +13,7 @@ def album_list(request):
     return album_archive(request, year)
 
 
-#! not a view
+# ! not a view
 def make_archive_links():
     years = []
     qs = Album.objects.filter(public=True).order_by('date')

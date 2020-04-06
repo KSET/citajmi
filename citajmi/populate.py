@@ -23,6 +23,7 @@ def main():
             print 'Not created: %s' % size.name
     print 'Created %d photo sizes.' % counter
 
+
 if __name__ == '__main__':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "citajmi.settings")
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -23,7 +23,7 @@ def active_reverse(request, view_name):
     pattern = ''
     try:
         pattern = reverse(view_name)
-    except:
+    except Exception:
         pass
     return active(request, pattern)
 

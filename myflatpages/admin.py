@@ -16,5 +16,6 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
             ))
         return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
+
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, TinyMCEFlatPageAdmin)

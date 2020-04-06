@@ -35,7 +35,7 @@ class EventForm(forms.ModelForm):
 
 
 class EventImgForm(forms.ModelForm):
-    help_text = 'Maks. veličina %dmb. Slika nije obavezna.' % (settings.IMG_MAX_SIZE/1048576)
+    help_text = 'Maks. veličina %dmb. Slika nije obavezna.' % (settings.IMG_MAX_SIZE / 1048576)
     image = forms.ImageField(label=u'Slika uz događaj', required=False, help_text=help_text)
 
     def clean_image(self):
@@ -44,7 +44,7 @@ class EventImgForm(forms.ModelForm):
             if image.content_type.replace('image/', '') not in settings.IMG_TYPES:
                 raise forms.ValidationError('Slika mora biti u %s formatu.' % (' ili '.join(settings.IMG_TYPES),))
             if image._size > settings.IMG_MAX_SIZE:
-                raise forms.ValidationError('Slika je prevelika ( > %dmb )' % (settings.IMG_MAX_SIZE/1048576))
+                raise forms.ValidationError('Slika je prevelika ( > %dmb )' % (settings.IMG_MAX_SIZE / 1048576))
         return image
 
     class Meta:

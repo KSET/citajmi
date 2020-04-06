@@ -1,6 +1,13 @@
 # Django settings for citajmi project.
 import os
+import random
+import time
+from hashlib import md5
+
+import photologue
+
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+from django.template.defaultfilters import slugify
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, '../..'))
@@ -162,12 +169,6 @@ TINYMCE_DEFAULT_CONFIG = {
     # 'theme_advanced_buttons3': '',
 }
 
-import photologue
-import time
-import random
-from hashlib import md5
-from django.template.defaultfilters import slugify
-
 
 def PHOTOLOGUE_PATH(instance, filename):
     typ = type(instance)
@@ -187,7 +188,7 @@ def PHOTOLOGUE_PATH(instance, filename):
         # %W week in year 1-53
         folder = time.strftime('galleryimgs/%Y/W/').replace('W', '%02d' % int(time.strftime('%W')))
         extension = os.path.splitext(filename.lower())[1]   # .jpg
-        filename = md5(str(time.time())+str(random.random()*1000)).hexdigest() + extension
+        filename = md5(str(time.time()) + str(random.random() * 1000)).hexdigest() + extension
     else:
         folder = 'photos'
     return os.path.join(photologue.models.PHOTOLOGUE_DIR, folder, filename)

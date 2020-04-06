@@ -44,6 +44,7 @@ def main():
             print 'Not created: %s' % page.url
     print 'Created %d flatpages.' % counter
 
+
 if __name__ == '__main__':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "citajmi.settings")
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))

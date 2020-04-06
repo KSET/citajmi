@@ -39,7 +39,7 @@ class AlbumEntryForm(forms.ModelForm):
 
 
 class EntryImgForm(forms.ModelForm):
-    help_text = 'Maks. veličina %dmb.' % (settings.IMG_MAX_SIZE/1048576)
+    help_text = 'Maks. veličina %dmb.' % (settings.IMG_MAX_SIZE / 1048576)
     image = forms.ImageField(label=u'Fotografija', required=False, help_text=help_text)
 
     def clean_image(self):
@@ -48,7 +48,7 @@ class EntryImgForm(forms.ModelForm):
             if image.content_type.replace('image/', '') not in settings.IMG_TYPES:
                 raise forms.ValidationError('Fotografija mora biti u %s formatu.' % (' ili '.join(settings.IMG_TYPES),))
             if image._size > settings.IMG_MAX_SIZE:
-                raise forms.ValidationError('Fotografija je prevelika ( > %dmb )' % (settings.IMG_MAX_SIZE/1048576))
+                raise forms.ValidationError('Fotografija je prevelika ( > %dmb )' % (settings.IMG_MAX_SIZE / 1048576))
         return image
 
     class Meta:

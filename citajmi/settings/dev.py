@@ -1,4 +1,6 @@
 # Load defaults in order to then add/override with dev-only settings
+import warnings
+import traceback    # noqa
 from base import *
 
 DEBUG = True
@@ -16,13 +18,12 @@ INSTALLED_APPS += (
 )
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
 
+
 # Verbose show warning
 # http://docs.python.org/2/library/warnings.html#warnings.showwarning
-import warnings
-import traceback
-
-
 def custom_showwarning(message, category, filename, lineno, **kwargs):
     warnings.formatwarning(message, category, filename, lineno)
     # traceback.print_exc()
+
+
 warnings.showwarning = custom_showwarning

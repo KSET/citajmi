@@ -12,7 +12,7 @@ class LoggingMiddleware(object):
         try:
             agent = httpagentparser.detect(request.META['HTTP_USER_AGENT'])
             agent_info = '"%s %s"' % (agent['browser'].get('name', '-'), agent['browser'].get('version', '-'))
-        except:
+        except Exception:
             agent_info = '-'
         entry = ('%s "%s %s" %s %s %s' % (request.META.get('REMOTE_ADDR', '-'), request.method, request.path,
                                           response.status_code, len(response.content), agent_info))

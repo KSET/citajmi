@@ -12,6 +12,7 @@ class EventImgInline(admin.StackedInline):
     inline_classes = ('collapse open',)
 
 
+@admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     def admin_image_display(self, obj):
         if hasattr(obj, 'image'):
@@ -29,5 +30,3 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ['-created']
 
     inlines = (EventImgInline,)
-
-admin.site.register(Event, EventAdmin)

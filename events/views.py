@@ -44,12 +44,12 @@ def make_archive_links():
     fmonth = first.start.month
     months = []
     # loop over years and months
-    for y in range(year, fyear-1, -1):
+    for y in range(year, fyear - 1, -1):
         start, end = 12, 0
         if y == year:
             start = month
         if y == fyear:
-            end = fmonth-1
+            end = fmonth - 1
         for m in range(start, end, -1):
             date = datetime.date(year=y, month=m, day=1)
             count = Event.objects.month(y, m).count()

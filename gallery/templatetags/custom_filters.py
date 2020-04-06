@@ -14,6 +14,7 @@ def youtube_embed_url(url):
         return embed_url
     return ''
 
+
 youtube_embed_url.is_safe = True
 
 
@@ -26,5 +27,6 @@ def youtube_thumbnail_url(url, big=True):
         thumbnail_url = 'http://img.youtube.com/vi/%s/%d.jpg' % (match.group('id'), 0 if big else 2)
         return thumbnail_url
     return ''
+
 
 youtube_thumbnail_url.is_safe = True
