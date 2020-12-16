@@ -2,13 +2,11 @@ from django.contrib import admin
 from books.models import Publisher, Author, Book, BookImg
 
 
-@admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
 
 
-@admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name')
     search_fields = ('last_name', 'first_name')
@@ -23,7 +21,6 @@ class BookImgInline(admin.StackedInline):
     inline_classes = ('collapse open',)
 
 
-@admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     def admin_authors_display(self, obj):
         return unicode(', '.join(unicode(x) for x in obj.authors.all()))
@@ -43,3 +40,8 @@ class BookAdmin(admin.ModelAdmin):
     filter_horizontal = ('authors',)
 
     inlines = (BookImgInline,)
+
+
+admin.site.register(Publisher, PublisherAdmin)
+admin.site.register(Author, AuthorAdmin)
+admin.site.register(Book, BookAdmin)

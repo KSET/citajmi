@@ -51,7 +51,6 @@ class EntryImgInline(admin.StackedInline):
     inline_classes = ('collapse open',)
 
 
-@admin.register(AlbumEntry)
 class AlbumEntryAdmin(admin.ModelAdmin):
     def admin_album_display(self, obj):
         return unicode(', '.join(unicode(x) for x in obj.albums.all()))
@@ -81,7 +80,6 @@ class AlbumEntryAdmin(admin.ModelAdmin):
     inlines = (EntryImgInline,)
 
 
-@admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
     def admin_cover_display(self, obj):
         url = obj.get_cover_url(big=False)
@@ -118,3 +116,7 @@ class AlbumAdmin(admin.ModelAdmin):
                             u'i koje ne pripadaju ni jednom drugom albumu.'),
         }),
     )
+
+
+admin.site.register(AlbumEntry, AlbumEntryAdmin)
+admin.site.register(Album, AlbumAdmin)
