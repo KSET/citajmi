@@ -40,6 +40,7 @@ SITE_ID = 1
 
 USE_I18N = True
 USE_L10N = True
+DATETIME_INPUT_FORMATS = ('%d.%m.%Y. %H:%M',)
 USE_TZ = True
 
 PREPEND_WWW = False
